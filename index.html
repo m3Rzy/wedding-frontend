@@ -86,7 +86,7 @@
             background-repeat: no-repeat;  
             background-size: cover;
             background-position: center center;
-            background-attachment:fixed;
+            /* background-attachment:fixed; */
         } 
 
         .dress-code {
@@ -94,7 +94,7 @@
             background-repeat: no-repeat;  
             background-size: cover;
             background-position: center center;
-            background-attachment:fixed;
+            /* background-attachment:fixed; */
         }
         
         /* Заголовок */
@@ -744,6 +744,24 @@
                 border-color: transparent var(--light-color) transparent transparent;
             }
         }
+        /* Все существующие стили остаются без изменений */
+        /* ... */
+        
+        /* Добавляем стили для динамической валидации */
+        input.valid {
+            border-color: #2ecc71;
+        }
+        
+        .success-message {
+            color: #2ecc71;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -925,10 +943,12 @@
             
             if (nameValue === '' || nameValue.length < 2) {
                 nameInput.classList.add('error');
+                nameInput.classList.remove('valid');
                 nameError.classList.add('show');
                 isValid = false;
             } else {
                 nameInput.classList.remove('error');
+                nameInput.classList.add('valid');
                 nameError.classList.remove('show');
             }
             
@@ -940,15 +960,59 @@
             // Проверяем, что введено 10 цифр
             if (phoneValue.length !== 10) {
                 phoneInput.classList.add('error');
+                phoneInput.classList.remove('valid');
                 phoneError.classList.add('show');
                 isValid = false;
             } else {
                 phoneInput.classList.remove('error');
+                phoneInput.classList.add('valid');
                 phoneError.classList.remove('show');
             }
             
             return isValid;
         }
+        
+        // Валидация имени в реальном времени
+        document.getElementById('name').addEventListener('input', function() {
+            const nameValue = this.value.trim();
+            const nameError = document.getElementById('name-error');
+            
+            if (nameValue.length >= 2) {
+                this.classList.remove('error');
+                this.classList.add('valid');
+                nameError.classList.remove('show');
+            } else {
+                this.classList.remove('valid');
+                if (nameValue.length > 0) {
+                    this.classList.add('error');
+                    nameError.classList.add('show');
+                } else {
+                    this.classList.remove('error');
+                    nameError.classList.remove('show');
+                }
+            }
+        });
+        
+        // Валидация телефона в реальном времени
+        document.getElementById('phone').addEventListener('input', function() {
+            const phoneValue = this.value.replace(/\D/g, '');
+            const phoneError = document.getElementById('phone-error');
+            
+            if (phoneValue.length === 10) {
+                this.classList.remove('error');
+                this.classList.add('valid');
+                phoneError.classList.remove('show');
+            } else {
+                this.classList.remove('valid');
+                if (phoneValue.length > 0) {
+                    this.classList.add('error');
+                    phoneError.classList.add('show');
+                } else {
+                    this.classList.remove('error');
+                    phoneError.classList.remove('show');
+                }
+            }
+        });
         
         // Форматирование телефона в реальном времени
         document.getElementById('phone').addEventListener('input', function(e) {
@@ -1006,7 +1070,7 @@
             }
         });
         
-        // Обработчики событий для валидации
+        // Обработчики событий для валидации при потере фокуса
         document.getElementById('name').addEventListener('blur', function() {
             validateForm();
         });
@@ -1059,6 +1123,9 @@
             .then(data => {
                 alert('Спасибо за ваш ответ! Мы сохранили ваши данные.');
                 document.getElementById('rsvp-form').reset();
+                // Убираем классы валидации после сброса формы
+                document.getElementById('name').classList.remove('valid', 'error');
+                document.getElementById('phone').classList.remove('valid', 'error');
             })
             .catch(error => {
                 console.error('Ошибка:', error);
