@@ -1728,13 +1728,14 @@
             submitBtn.disabled = true;
             
             // Отправляем данные на сервер
-            fetch('http://89.104.69.21:8080', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(user)
-            })
+fetch('http://89.104.69.21:8080', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    mode: 'cors', // добавляем явное указание режима CORS
+    body: JSON.stringify(user)
+})
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Ошибка сети');
