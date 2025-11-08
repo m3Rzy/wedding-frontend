@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Матвей и Александра | Приглашение на свадьбу</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
         
         :root {
             --primary-color: #FFC857;
@@ -18,6 +16,9 @@
             --light-color: #ffffff;
             --error-color: #e74c3c;
             --success-color: #2ecc71;
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
         
         * {
@@ -27,11 +28,12 @@
         }
         
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Inter', sans-serif;
             color: var(--dark-color);
             background-color: #fcf9f9;
             line-height: 1.6;
             overflow-x: hidden;
+            font-weight: 400;
         }
         
         .container {
@@ -45,13 +47,13 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 15px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
             padding: 20px 25px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--glass-shadow);
             z-index: 10000;
             max-width: 350px;
             transform: translateX(400px);
@@ -148,18 +150,28 @@
         .dress-code-content {
             max-width: 800px;
             margin: 0 auto;
-            background: var(--primary-color);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
             padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
         }
 
         .dress-code-item {
             margin-bottom: 25px;
             padding: 20px;
             background: var(--light-color);
-            border-radius: 10px;
+            border-radius: 15px;
             border-left: 4px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dress-code-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .dress-code-item:last-child {
@@ -171,14 +183,22 @@
             font-weight: 600;
             color: var(--accent-color);
             margin-bottom: 10px;
-            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .custom-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
         }
 
         .dress-code-text {
             font-size: 1.1rem;
             line-height: 1.6;
             color: var(--dark-color);
-            font-family: 'Montserrat', sans-serif;
         }
 
         .important-info {
@@ -190,11 +210,11 @@
         
         /* Заголовок */
         .hero h1 {
-            font-family: 'Marck Script', cursive;
+            font-family: 'Playfair Display', serif;
             font-size: 5.5rem;
             margin-bottom: 20px;
-            font-weight: 400;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 600;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
             line-height: 1.2;
             letter-spacing: 1px;
             animation: fadeInDown 1.5s ease-out;
@@ -205,7 +225,7 @@
             margin-bottom: 30px;
             max-width: 700px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            font-family: 'Cormorant Upright', serif;
+            font-weight: 300;
             animation: fadeInUp 1.5s ease-out 0.3s both;
         }
         
@@ -217,8 +237,8 @@
             font-weight: 500;
             margin: 20px 0;
             display: inline-block;
-            font-family: 'Montserrat', sans-serif;
             animation: fadeIn 2s ease-out 0.6s both;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         
         /* Section styles */
@@ -241,6 +261,7 @@
             margin-bottom: 40px;
             color: var(--dark-color);
             position: relative;
+            font-weight: 600;
         }
         
         .section-title::after {
@@ -252,6 +273,7 @@
             width: 60px;
             height: 3px;
             background-color: var(--accent-color);
+            border-radius: 2px;
         }
         
         /* About section */
@@ -264,9 +286,10 @@
         .about p {
             margin-bottom: 20px;
             font-size: 1.1rem;
+            font-weight: 400;
         }
         
-        /* Program section - МИНИМАЛИСТИЧНЫЙ ВАРИАНТ */
+        /* Program section */
         .program {
             background-color: var(--primary-color);
         }
@@ -280,10 +303,13 @@
         }
         
         .program-item {
-            background: var(--light-color);
-            border-radius: 12px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
             padding: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--glass-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             opacity: 0;
             transform: translateY(20px);
@@ -297,7 +323,7 @@
         
         .program-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
         
         .program-time {
@@ -306,7 +332,6 @@
             color: var(--accent-color);
             margin-bottom: 8px;
             display: block;
-            font-family: 'Montserrat', sans-serif;
         }
         
         .program-title {
@@ -314,14 +339,12 @@
             font-weight: 500;
             margin-bottom: 5px;
             color: var(--dark-color);
-            font-family: 'Montserrat', sans-serif;
         }
         
         .program-location {
             font-size: 0.95rem;
             color: #666;
             line-height: 1.4;
-            font-family: 'Montserrat', sans-serif;
         }
         
         /* Location section */
@@ -334,8 +357,8 @@
         }
         
         .location-info p {
-            font-family: 'Montserrat', sans-serif;
             margin-bottom: 10px;
+            font-weight: 400;
         }
         
         .map {
@@ -346,8 +369,9 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 30px;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .map iframe {
@@ -366,7 +390,7 @@
         .important-info p {
             max-width: 600px;
             margin: 0 auto 20px;
-            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
         }
         
         /* Form section */
@@ -383,22 +407,22 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            font-family: 'Montserrat', sans-serif;
         }
         
         input, select, textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: 'Montserrat', sans-serif;
+            border-radius: 10px;
             transition: border-color 0.3s;
             font-size: 16px; /* Предотвращает zoom на iOS */
+            font-family: 'Inter', sans-serif;
         }
         
         input:focus {
             outline: none;
             border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(20, 91, 99, 0.1);
         }
         
         input.error {
@@ -410,7 +434,6 @@
             font-size: 0.85rem;
             margin-top: 5px;
             display: none;
-            font-family: 'Montserrat', sans-serif;
         }
         
         .error-message.show {
@@ -430,7 +453,6 @@
             font-weight: 500;
             pointer-events: none;
             z-index: 1;
-            font-family: 'Montserrat', sans-serif;
         }
         
         #phone {
@@ -487,9 +509,8 @@
             cursor: pointer;
             padding: 10px 15px;
             border: 2px solid #ddd;
-            border-radius: 5px;
+            border-radius: 10px;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
         }
         
         .transport-option:hover {
@@ -509,7 +530,6 @@
         .transport-option label {
             margin-bottom: 0;
             cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
         }
         
         .car-number-group {
@@ -529,37 +549,43 @@
             border: none;
             padding: 15px 30px;
             font-size: 1.1rem;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
             display: block;
             margin: 30px auto 0;
-            transition: background-color 0.3s;
-            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
             font-weight: 500;
             text-align: center;
             width: 100%;
             max-width: 300px;
+            box-shadow: 0 4px 15px rgba(20, 91, 99, 0.3);
         }
         
         button:hover {
             background-color: #c19b2e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(20, 91, 99, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
         }
         
         button:disabled {
             background-color: #cccccc;
             cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
         
         /* Placeholder стили */
         ::placeholder {
             color: #999;
-            font-family: 'Montserrat', sans-serif;
             font-size: 14px;
         }
         
         /* Стили для уже введенных данных */
         input:not(:placeholder-shown) {
-            font-family: 'Montserrat', sans-serif;
             color: var(--dark-color);
         }
         
@@ -577,8 +603,8 @@
         }
         
         .footer-text p {
-            font-family: 'Montserrat', sans-serif;
             margin-bottom: 10px;
+            font-weight: 400;
         }
         
         /* Countdown */
@@ -593,21 +619,21 @@
         .countdown-item {
             background-color: rgba(255, 255, 255, 0.2);
             padding: 12px;
-            border-radius: 8px;
+            border-radius: 15px;
             min-width: 70px;
             backdrop-filter: blur(5px);
             animation: pulse 2s infinite;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
         .countdown-number {
             font-size: 1.8rem;
-            font-weight: bold;
-            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
         
         .countdown-item div:last-child {
-            font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
+            font-weight: 400;
         }
         
         /* Анимации */
@@ -652,6 +678,84 @@
             100% {
                 transform: scale(1);
             }
+        }
+
+        /* Декоративные элементы */
+        .floating-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 15%;
+            left: 8%;
+            width: 70px;
+            height: 70px;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        /* Стили для динамической валидации */
+        input.valid {
+            border-color: #2ecc71;
+        }
+        
+        .success-message {
+            color: #2ecc71;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+
+        /* Эффект параллакса для героя */
+        .parallax {
+            transform-style: preserve-3d;
+        }
+
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
         
         /* Responsive */
@@ -782,6 +886,10 @@
                 left: 10px;
                 max-width: none;
             }
+
+            .floating-element {
+                display: none; /* Скрываем на мобильных для производительности */
+            }
         }
         
         @media (max-width: 576px) and (orientation: portrait) {
@@ -822,7 +930,7 @@
             
             .program-item {
                 padding: 18px;
-                border-radius: 10px;
+                border-radius: 15px;
             }
             
             .program-time {
@@ -842,7 +950,7 @@
             
             .dress-code-content {
                 padding: 25px 15px;
-                border-radius: 10px;
+                border-radius: 15px;
             }
             
             .dress-code-item {
@@ -969,29 +1077,14 @@
                 padding: 15px;
             }
         }
-
-        /* Все существующие стили остаются без изменений */
-        /* ... */
-        
-        /* Добавляем стили для динамической валидации */
-        input.valid {
-            border-color: #2ecc71;
-        }
-        
-        .success-message {
-            color: #2ecc71;
-            font-size: 0.85rem;
-            margin-top: 5px;
-            display: none;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .success-message.show {
-            display: block;
-        }
     </style>
 </head>
 <body>
+    <!-- Декоративные элементы -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+
     <!-- Стильное стеклянное уведомление -->
     <div class="glass-notification" id="glass-notification">
         <div class="notification-icon">🎉</div>
@@ -1042,27 +1135,27 @@
             <h2 class="section-title">Программа дня</h2>
             <div class="program-timeline">
                 <div class="program-item">
-                    <span class="program-time">15:50</span>
+                    <span class="program-time">5 декабря – 15:50</span>
                     <div class="program-title">Сбор гостей</div>
                     <div class="program-location">Дворец бракосочетания Nº2, ул. Фуршатская, д. 52</div>
                 </div>
                 <div class="program-item">
-                    <span class="program-time">16:20</span>
+                    <span class="program-time">5 декабря – 16:20</span>
                     <div class="program-title">Торжественная регистрация</div>
                 </div>
                 <div class="program-item">
-                    <span class="program-time">17:00</span>
+                    <span class="program-time">5 декабря – 17:00</span>
                     <div class="program-title">Трансфер в загородный дом</div>
                     <div class="program-location">Комфортный трансфер с ночевкой</div>
                 </div>
                 <div class="program-item">
-                    <span class="program-time">18:00</span>
+                    <span class="program-time">5 декабря – 18:00</span>
                     <div class="program-title">Свадебный ужин</div>
                     <div class="program-location">Коттедж «Медное озеро 3»</div>
                 </div>
                 <div class="program-item">
-                    <span class="program-time">6 декабря</span>
-                    <div class="program-location">Выезд из коттеджа</div>
+                    <span class="program-time">6 декабря – 12:00</span>
+                    <div class="program-title">Выезд из коттеджа</div>
                 </div>
             </div>
         </div>
@@ -1078,8 +1171,11 @@
                     <div class="dress-code-text">Просим соблюдать официальную форму одежды</div>
                 </div>
                 <div class="dress-code-item">
-                    <div class="dress-code-title">🎉 На коттедже</div>
-                    <div class="dress-code-text">Элементы одежды с миньонами приветствуются 😇</div>
+                                <div class="dress-code-title">🎉 В коттедже</div>
+                    <div class="dress-code-text">Элементы одежды с миньонами приветствуются 
+                                                <img src="smile.png" alt="Миньон" class="custom-icon">
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -1106,7 +1202,7 @@
             <h2 class="section-title">Важная информация</h2>
             <p>Прошу еще раз довести до сведения гостей, что беспрепятственный проезд на трансфере осуществляется с 6:30 до 23:30. При планировании выезда просьба учитывать, что уехать необходимо до 23:00. В случае более позднего выезда гостям придется добираться до КПП пешком (расстояние — 1 км).</p>
             <p>Если вы приезжаете на отдых на личном транспорте, пожалуйста, оставляйте автомобиль на парковке у въезда в поселок. Обращаем особое внимание на важность ввода корректных и точных данных. Это обязательное условие для бронирования парковочного места и своевременного оформления пропусков на въезд.</p>
-            <p>Администратор на своем авто доставляет вас, ваших гостей и вещи к коттеджу и обратно.</p>
+            <p>Администратор на своем авто доставляет вас, ваших гостей и веси к коттеджу и обратно.</p>
         </div>
     </section>
 
@@ -1632,7 +1728,7 @@
             submitBtn.disabled = true;
             
             // Отправляем данные на сервер
-            fetch('http://localhost:8080', {
+            fetch('http://89.104.69.21:8080', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
