@@ -1728,11 +1728,12 @@
             submitBtn.disabled = true;
             
             // Отправляем данные на сервер
-fetch('/api/', {
+fetch('http://89.104.69.21:8080', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
+    mode: 'cors', // добавляем явное указание режима CORS
     body: JSON.stringify(user)
 })
             .then(response => {
